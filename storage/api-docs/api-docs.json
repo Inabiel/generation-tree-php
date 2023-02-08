@@ -1,0 +1,416 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Generation Tree API",
+        "description": "Generation Tree API",
+        "contact": {
+            "email": "nizzullah@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/tree/root/create": {
+            "post": {
+                "tags": [
+                    "GenerationTree"
+                ],
+                "summary": "Create new generation tree root",
+                "description": "Returns created generation tree root",
+                "operationId": "PostGenerationTreeRoot",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralRootRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Data Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenerationTreeResource"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
+        "/tree/root/{id}": {
+            "put": {
+                "tags": [
+                    "GenerationTree"
+                ],
+                "summary": "Update existing generation tree root",
+                "description": "Returns updated generation tree root",
+                "operationId": "UpdateGenerationTreeRoot",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Integer of Id",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralRootRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenerationTreeResource"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
+        "/tree/{id}": {
+            "delete": {
+                "tags": [
+                    "GenerationTree"
+                ],
+                "summary": "Delete existing generation tree root",
+                "description": "Returns Deleted generation tree root",
+                "operationId": "DeleteGenerationTreeRoot",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Integer of Id",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Deleted"
+                    },
+                    "404": {
+                        "description": "Data Not Found"
+                    }
+                }
+            }
+        },
+        "/tree": {
+            "get": {
+                "tags": [
+                    "GenerationTree"
+                ],
+                "summary": "Get All Node from Parent",
+                "description": "Return All Node tree root",
+                "operationId": "GetAllNodeGenerationTreeRoot",
+                "responses": {
+                    "200": {
+                        "description": "Data Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenerationFullNodeResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data Not Found"
+                    }
+                }
+            }
+        },
+        "/tree/{id}/descendant": {
+            "get": {
+                "tags": [
+                    "GenerationTree"
+                ],
+                "summary": "Get Parent Node from Given Child id",
+                "description": "Return Parent Node from Given Child id",
+                "operationId": "GetDescendantTreNode",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Integer of Id",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenerationFullNodeResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data Not Found"
+                    }
+                }
+            }
+        },
+        "/tree/descendant/create": {
+            "post": {
+                "tags": [
+                    "GenerationTree"
+                ],
+                "summary": "Create new generation tree root",
+                "description": "Returns created generation tree root",
+                "operationId": "PostGenerationDescendantRoot",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GeneralDescendantRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Data Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenerationTreeResource"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GeneralDescendantRequest": {
+                "title": "General Root Request",
+                "description": "General schema for Root request body data",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Name of node",
+                        "type": "string",
+                        "example": "Bambang"
+                    },
+                    "gender": {
+                        "title": "Gender",
+                        "description": "Gender of node",
+                        "type": "boolean",
+                        "example": "1"
+                    },
+                    "parent_id": {
+                        "title": "Parent Id",
+                        "description": "Id of Parent Node",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "GeneralRootRequest": {
+                "title": "General Root Request",
+                "description": "General schema for Root request body data",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Name of node",
+                        "type": "string",
+                        "example": "Bambang"
+                    },
+                    "gender": {
+                        "title": "Gender",
+                        "description": "Gender of node",
+                        "type": "boolean",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "GenerationFullTreeNode": {
+                "title": "Generation Tree",
+                "description": "Generation Tree model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name Of Generation Tree Node",
+                        "type": "string",
+                        "example": "Budi"
+                    },
+                    "gender": {
+                        "title": "Gender",
+                        "description": "Name Of Generation Tree Node",
+                        "type": "boolean",
+                        "example": "1 For Male, 0 for Female"
+                    },
+                    "parent_id": {
+                        "title": "Parent Id",
+                        "description": "to keep track which is parent and child",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "generation_number": {
+                        "title": "Generation Number",
+                        "description": "to keep track of tree depth",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Generation Tree"
+                }
+            },
+            "GenerationTree": {
+                "title": "Generation Tree",
+                "description": "Generation Tree model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name Of Generation Tree Node",
+                        "type": "string",
+                        "example": "Budi"
+                    },
+                    "gender": {
+                        "title": "Gender",
+                        "description": "Name Of Generation Tree Node",
+                        "type": "boolean",
+                        "example": "1 For Male, 0 for Female"
+                    },
+                    "parent_id": {
+                        "title": "Parent Id",
+                        "description": "to keep track which is parent and child",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Generation Tree"
+                }
+            },
+            "GenerationFullNodeResource": {
+                "title": "Generation Tree Resources",
+                "description": "Generation Tree resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GenerationFullTreeNode"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "GenerationTreeResource"
+                }
+            },
+            "GenerationTreeResource": {
+                "title": "Generation Tree Resources",
+                "description": "Generation Tree resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GenerationTree"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "GenerationTreeResource"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Generation Tree Members",
+            "description": "API Endpoints of Generation Tree Members"
+        }
+    ]
+}
